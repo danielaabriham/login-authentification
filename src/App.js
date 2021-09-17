@@ -6,10 +6,12 @@ import Login from './components/Login';
 import Dashboard from './components/Dashboard/index'
 import Preferences from './components/Preferences/index'
 
-const App = () => {
-  const [token, setToken] = React.useState();
+import { useToken } from './components/Token.js/Token';
 
-  if (token) {
+const App = () => {
+  const {token, setToken} = useToken()
+
+  if (!token) {
     return <Login setToken={setToken}/>
   }
 
